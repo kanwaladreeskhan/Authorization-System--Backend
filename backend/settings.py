@@ -73,8 +73,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+#Database
+#https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
     "default": dj_database_url.config(
@@ -91,7 +91,7 @@ DATABASES = {
 #         'HOST': os.getenv('DB_HOST'),
 #         'PORT': os.getenv('DB_PORT'),
 #     }
-# }
+#}
 
 STATIC_URL = "static/"
 

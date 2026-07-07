@@ -37,26 +37,20 @@ class IsUser(BasePermission):
 from .models import ResourcePermission
 
 
-class HasReportAccess(
-    BasePermission
-):
+class HasReportAccess(BasePermission):
 
-    def has_permission(
-        self,
-        request,
-        view
-    ):
+    def has_permission(self, request, view):
 
-        return (
-            ResourcePermission
-            .objects
-            .filter(
-                user=request.user,
-                resource='reports',
-                can_view=True
-            )
-            .exists()
-        )
+        return ResourcePermission.objects.filter(
+            user=request.user,
+            resource__in=[
+                "weekly_reports",
+                "monthly_reports",
+                "annual_reports",
+                "financial_reports"
+            ],
+            can_view=True
+        ).exists()
     
 class IsAdult(
     BasePermission
