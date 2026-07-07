@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views import (
     AssignReportAccessView,
+    LogoutView,
     RegisterView,
     LoginView,
     RefreshView,
@@ -56,5 +57,9 @@ path(
 path(
     'assign-report-access/',
     AssignReportAccessView.as_view()
+),
+path(
+    "logout/",
+    LogoutView.as_view()
 ),
 ]

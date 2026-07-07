@@ -66,7 +66,7 @@ class RegisterView(APIView):
 class LoginView(APIView):
 
     permission_classes = [AllowAny]
-    
+    authentication_classes=[]
     throttle_classes = [LoginThrottle]
     def post(self,request):
 
@@ -480,3 +480,19 @@ class AssignReportAccessView(
             "message":
             "Permissions updated successfully"
         })
+
+class LogoutView(APIView):
+
+    authentication_classes = []
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+
+        response = Response({
+            "message": "Logged out"
+        })
+
+        response.delete_cookie("refresh_token")
+
+        return response
+    
